@@ -4,7 +4,6 @@ import { Card, CardContent } from "./components/ui/card";
 import { Input } from "./components/ui/input";
 import { useState } from "react";
 import { getWeather } from "./services/weatherapi_api";
-import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
 
 function App() {
