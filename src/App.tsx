@@ -2,19 +2,19 @@ import { CloudRain, CloudSnow, MapPin, Sun } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 import { Input } from "./components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getWeather } from "./services/weatherapi_api";
 import { toast } from "sonner";
 
 function App() {
-  const [cidade, setCidade] = useState("");
-  const [temperatura, setTemperatura] = useState(26);
-  const [descricao, setDescricao] = useState("Ensolarado");
-  const [umidade, setUmidade] = useState(72);
-  const [chuva, setChuva] = useState(15);
-  const [uv, setUv] = useState("Alto");
-  const [localizacao, setLocalizacao] = useState("Itajaí, SC");
-  const [iconeClima, setIconeClima] = useState("☀️");
+  const [cidade, setCidade] = useState("itajai");
+  const [temperatura, setTemperatura] = useState(0);
+  const [descricao, setDescricao] = useState("-");
+  const [umidade, setUmidade] = useState(0);
+  const [chuva, setChuva] = useState(0);
+  const [uv, setUv] = useState("-");
+  const [localizacao, setLocalizacao] = useState("-");
+  const [iconeClima, setIconeClima] = useState("-");
 
   function capitalizeWords(str: string) {
     return str
@@ -74,6 +74,10 @@ function App() {
       console.error("Erro ao buscar clima:", error);
     }
   };
+
+  useEffect(() => {
+    handleSearch();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 flex flex-col items-center justify-center p-4">
